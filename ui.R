@@ -64,12 +64,16 @@ dashboardPage(
                          width=8,
                          valueBoxOutput("SatisfatorioBox", width = 6),
                          valueBoxOutput("InsatisfatorioBox",width = 6),
+                         box(
+                           width = 12, title = "Grupos de Indicadores",status = "primary",solidHeader = TRUE ,collapsible = TRUE,
+                           uiOutput("construtosDesempenho")
+                         ),
                          tabBox(
                            id="tabDesempenho",side = "left", width = 12,
                            selected = "1",
                            tabPanel("Geral",value= "1", 
-                                    showOutput("graficoDesempenhoGeral", "nvd3"),
-                                    uiOutput("construtosDesempenho")
+                                    showOutput("graficoDesempenhoGeral", "nvd3")
+                                    
                                     ),
                            tabPanel("Indicadores",value="2" ,
                                     showOutput("graficoDesempenhoInd", "highcharts"),
@@ -100,12 +104,16 @@ dashboardPage(
                          width=8,
                          valueBoxOutput("BaixoRiscoBox",width = 6),
                          valueBoxOutput("AltoRiscoBox", width = 6),
+                         box(
+                           width = 12, title = "Grupos de Indicadores",status = "primary",solidHeader = TRUE ,collapsible = TRUE,
+                           uiOutput("construtosEvasao")
+                         ),
                          tabBox(
                            id="tabEvasao",side = "left", width = 12,
                            selected = "1",
                            tabPanel("Geral",value = "1",
-                                    showOutput("graficoEvasao", "nvd3"),
-                                    uiOutput("construtosEvasao")
+                                    showOutput("graficoEvasao", "nvd3")
+                                    
                            ),
                            tabPanel("Indicadores",value = "2" ,
                                     showOutput("graficoEvasaoInd", "highcharts"),
