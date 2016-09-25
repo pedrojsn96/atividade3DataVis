@@ -69,8 +69,7 @@ dashboardPage(
                                width = 12, title = "Grupos de Indicadores",status = "primary",solidHeader = TRUE ,collapsible = TRUE,
                                uiOutput("construtosDesempenho")
                              )),
-                         box(
-                           width = 12, title = "Gráfico",status = "primary",solidHeader = TRUE ,collapsible = TRUE,
+                         
                            tabBox(
                              id="tabDesempenho",side = "left", width = 12,
                              selected = "1",
@@ -85,7 +84,6 @@ dashboardPage(
                                       plotly::plotlyOutput('graficoDesempenhoAlunos')
                              )
                            )
-                         )
                          
                        ),
                        column(
