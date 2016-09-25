@@ -64,24 +64,29 @@ dashboardPage(
                          width=8,
                          valueBoxOutput("SatisfatorioBox", width = 6),
                          valueBoxOutput("InsatisfatorioBox",width = 6),
+                         conditionalPanel("input.tabDesempenho == 1",
+                             box(
+                               width = 12, title = "Grupos de Indicadores",status = "primary",solidHeader = TRUE ,collapsible = TRUE,
+                               uiOutput("construtosDesempenho")
+                             )),
                          box(
-                           width = 12, title = "Grupos de Indicadores",status = "primary",solidHeader = TRUE ,collapsible = TRUE,
-                           uiOutput("construtosDesempenho")
-                         ),
-                         tabBox(
-                           id="tabDesempenho",side = "left", width = 12,
-                           selected = "1",
-                           tabPanel("Geral",value= "1", 
-                                    showOutput("graficoDesempenhoGeral", "nvd3")
-                                    
-                                    ),
-                           tabPanel("Indicadores",value="2" ,
-                                    showOutput("graficoDesempenhoInd", "highcharts"),
-                                    tags$h5(style = "text-align: center;", "Clique e arraste sobre uma região para Zoom")),
-                           tabPanel("Alunos",value="3" ,
-                                    plotly::plotlyOutput('graficoDesempenhoAlunos')
-                                    )
+                           width = 12, title = "Gráfico",status = "primary",solidHeader = TRUE ,collapsible = TRUE,
+                           tabBox(
+                             id="tabDesempenho",side = "left", width = 12,
+                             selected = "1",
+                             tabPanel("Geral",value= "1", 
+                                      showOutput("graficoDesempenhoGeral", "nvd3")
+                                      
+                             ),
+                             tabPanel("Indicadores",value="2" ,
+                                      showOutput("graficoDesempenhoInd", "highcharts"),
+                                      tags$h5(style = "text-align: center;", "Clique e arraste sobre uma região para Zoom")),
+                             tabPanel("Alunos",value="3" ,
+                                      plotly::plotlyOutput('graficoDesempenhoAlunos')
+                             )
+                           )
                          )
+                         
                        ),
                        column(
                          class = "coluna4",
@@ -104,10 +109,11 @@ dashboardPage(
                          width=8,
                          valueBoxOutput("BaixoRiscoBox",width = 6),
                          valueBoxOutput("AltoRiscoBox", width = 6),
-                         box(
-                           width = 12, title = "Grupos de Indicadores",status = "primary",solidHeader = TRUE ,collapsible = TRUE,
-                           uiOutput("construtosEvasao")
-                         ),
+                         conditionalPanel("input.tabEvasao == 1",
+                            box(
+                                 width = 12, title = "Grupos de Indicadores",status = "primary",solidHeader = TRUE ,collapsible = TRUE,
+                                 uiOutput("construtosEvasao")
+                            )),
                          tabBox(
                            id="tabEvasao",side = "left", width = 12,
                            selected = "1",
